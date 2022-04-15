@@ -1,0 +1,78 @@
+<body>
+<script type="text/javascript">
+
+function montyHall(n) {
+  results = {
+    "Alice": 0,
+    "Bob": 0,
+    "Carol": 0,
+    "Dave": 0,
+    "Erin": 0,
+    "Frank": 0,
+    "Gina": 0
+  };
+
+  gPrev = true; // Alice if true, Bob if false
+
+  monty = [0,0,0];
+
+  for (i = 0; i < n; i++) {
+    m = Math.floor(Math.random() * 3);
+    monty[m] = 1;
+
+    // If you guess the right door then switch, you lose
+    // If you guess the wrong door and switch, you win
+
+    // Alice always picks door 1 and sticks, so if she was right she wins (33.3%)
+    // Bob always picks door 1 and changes, so if he was wrong, he wins (66.6%)
+    a = 0;
+    b = a;
+    if (monty[a]) {
+      results["Alice"]++;
+    } else { results["Bob"]++; }
+
+    // Carol chooses randomly both times, 1/3 then 1/2
+    // If she was right and sticks, she wins (1/3 * 1/2 = 1/6)
+    // If she was wrong and swaps, she wins (2/3 * 1/2 = 2/6)
+    // 1/6 + 2/6 = 50%
+    c1 = Math.floor(Math.random() * 3);
+    c2 = Math.floor(Math.random() * 2);
+    if ((c1 && !c2) || (!c1 && c2)) { results["Carol"]++; }
+
+    // Dave chooses randomly then sticks, 1/3
+    // Erin chooses randomly then swaps, 2/6
+    d = Math.floor(Math.random() * 3);
+    e = d;
+    if (monty[d]) {
+      results["Dave"]++;
+    } else { results["Erin"]++; }
+
+    // Frank chooses door 1, then switches if he can
+    // If he was right and can't swap, he wins (1/3 * 1/2 = 1/6)
+    // If he was wrong and can swap, he wins (2/3 * 1/2 = 2/6)
+    // 1/6 + 2/6 = 50%
+    f1 = 0;
+    f2 = Math.floor(Math.random() * 2);
+    if ((monty[f1] && !f2) || (!monty[f1] && f2)) {
+      results["Frank"]++;
+    }
+
+    // Gina uses either Alice or Bob's strategy
+    // She changes strategy if she loses
+    // She starts with Alice's (I defined this at the start of the function)
+    if ((gPrev && monty[a]) || (!gPrev && !monty[a])) {
+      results["Gina"]++;
+      gPrev = gPrev;
+    } else { gPrev = !gPrev; }
+
+    monty = [0,0,0];
+  }
+
+  for (i in results) { results[i] /= (n/100); }
+  return results;
+}
+
+console.table(montyHall(1000000));
+
+</script>
+</body>
