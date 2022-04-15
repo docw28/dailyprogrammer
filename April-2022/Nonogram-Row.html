@@ -1,0 +1,30 @@
+<body>
+<script type="text/javascript">
+
+var out = [];
+var x = 0;
+
+function nonogramRow(arr) {
+  x = 0;
+  out.length = 0;
+  for (i in arr) {
+    // console.log(arr[i]);
+    if (arr[i] == 1) { x++; }
+    if (arr[i] == 0 && x != 0) { out.push(x); x = 0;}
+  }
+
+   if (x != 0) {out.push(x)};
+  return out;
+
+}
+
+console.log(nonogramRow([]));
+console.log(nonogramRow([0,0,0,0,0]));
+console.log(nonogramRow([1,1,1,1,1]));
+console.log(nonogramRow([0,1,1,1,1,1,0,1,1,1,1]));
+console.log(nonogramRow([1,1,0,1,0,0,1,1,1,0,0]));
+console.log(nonogramRow([0,0,0,0,1,1,0,0,1,0,1,1,1]));
+console.log(nonogramRow([1,0,1,0,1,0,1,0,1,0,1,0,1,0,1]));
+
+</script>
+</body>
