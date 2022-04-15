@@ -1,0 +1,25 @@
+<body>
+<script type="text/javascript">
+
+coins = [500, 100, 25, 10, 5, 1];
+
+function change(x) {
+  total = 0;
+  for (i in coins) {
+    while (x >= coins[i]) {
+      // console.log(`${x} - ${coins[i]}`);
+      x -= coins[i];
+      total++;
+    }
+  }
+
+  return total;
+}
+
+console.log(change(0));
+console.log(change(12));
+console.log(change(468));
+console.log(change(123456));
+
+</script>
+</body>
