@@ -1,0 +1,56 @@
+<body>
+<script type="text/javascript">
+
+// completed
+
+const numerals = {
+  "M": 1000,
+  "D": 500,
+  "C": 100,
+  "L": 50,
+  "X": 10,
+  "V": 5,
+  "I": 1
+};
+
+var aTot = 0;
+var bTot = 0;
+
+
+keys = Object.keys(numerals);
+// console.log(keys);
+
+for (i in keys) {
+  key = keys[i];
+  // console.log(key, numerals[key]);
+}
+
+function numCompare(a, b) {
+  aTot = 0;
+  bTot = 0;
+  a = a.split("");
+  b = b.split("");
+  // console.log(a,b);
+
+  for (i in a) {
+    //console.log(numerals[a[i]]);
+    aTot = aTot + numerals[a[i]];
+  }
+
+  for (i in b) {
+    //console.log(numerals[b[i]]);
+    bTot = bTot + numerals[b[i]];
+  }
+  // console.log(aTot);
+  // console.log(bTot);
+  console.log(`${aTot} < ${bTot} = ${aTot < bTot}`);
+}
+
+console.log(numCompare("I", "I"));
+console.log(numCompare("I", "II"));
+console.log(numCompare("II", "I"));
+console.log(numCompare("V", "IIII"));
+console.log(numCompare("MDCLXV", "MDCLXVI"));
+console.log(numCompare("MM", "MDCCCCLXXXXVIIII"));
+</script>
+</body>
