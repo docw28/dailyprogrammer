@@ -16,15 +16,6 @@ const numerals = {
 var aTot = 0;
 var bTot = 0;
 
-
-keys = Object.keys(numerals);
-// console.log(keys);
-
-for (i in keys) {
-  key = keys[i];
-  // console.log(key, numerals[key]);
-}
-
 function numCompare(a, b) {
   aTot = 0;
   bTot = 0;
@@ -43,7 +34,7 @@ function numCompare(a, b) {
   }
   // console.log(aTot);
   // console.log(bTot);
-  console.log(`${aTot} < ${bTot} = ${aTot < bTot}`);
+  return `${aTot} < ${bTot} = ${aTot < bTot}`;
 }
 
 console.log(numCompare("I", "I"));
