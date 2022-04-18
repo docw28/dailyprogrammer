@@ -1,0 +1,44 @@
+<body>
+<script type="text/javascript">
+
+function sameNecklace(a, b) {
+  a = a.split("");
+  b = b.split("");
+  if (a == "" && b == "") {return true;}
+
+  for (letter of b) {
+    if (arraysEqual(a, b)) {
+      return true;
+    } else { cycle(b); }
+  }
+  return false;
+
+}
+
+function cycle(arr) {
+  arr.push(arr[0]);
+  arr.shift();
+}
+
+function arraysEqual(a, b) {
+  if (a.length != b.length) {return false;}
+  for (i in a) {
+    if (a[i] != b[i]) {return false;}
+  }
+  return true;
+}
+
+console.log(sameNecklace("nicole", "icolen"));
+console.log(sameNecklace("nicole", "lenico"));
+console.log(sameNecklace("nicole", "coneli"));
+console.log(sameNecklace("aabaaaaabaab", "aabaabaabaaa"));
+console.log(sameNecklace("abc", "cba"));
+console.log(sameNecklace("xxyyy", "xxxyy"));
+console.log(sameNecklace("xyxxz", "xxyxz"));
+console.log(sameNecklace("x", "x"));
+console.log(sameNecklace("x", "xx"));
+console.log(sameNecklace("x", ""));
+console.log(sameNecklace("", ""));
+
+</script>
+</body>
