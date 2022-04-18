@@ -1,0 +1,36 @@
+<body>
+<script type="text/javascript">
+
+function nextPal(n) {
+  n++;
+  while (true) {
+    if (isPal(n)) {
+      return n;
+    } else { n++; }
+  }
+  return(n);
+}
+
+function isPal(n) {
+  n = new String(n);
+  n = n.split("");
+
+  while (n.length > 1) {
+    if (n[0] == n[n.length - 1]) {
+      n.shift();
+      n.pop();
+    } else { return false; }
+  }
+  return true;
+}
+
+console.log(nextPal(808));
+console.log(nextPal(999));
+console.log(nextPal(2133));
+
+// nextPal(808);
+// nextPal(999);
+// nextPal(2133);
+
+</script>
+</body>
