@@ -28,12 +28,17 @@ function caesar(string, shift) {
 }
 
 
-console.log(caesar("a", 1));
-console.log(caesar("abcz", 1));
-console.log(caesar("irk", 13));
-console.log(caesar("fusion", 6));
-console.log(caesar("Daily Programmer!", 6));
-console.log(caesar("jgore vxumxgsskx", 20));
+
+function unCaesar(string) {
+
+
+
+  console.log(`Shift: ${shift}`);
+  console.log(`Decoded string:
+  ${caesar(string, (26 - shift))}`);
+}
+
+  unCaesar("Zol abyulk tl puav h ulda.")
 
 </script>
 </body>
