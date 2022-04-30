@@ -14,7 +14,7 @@ function caesarShift(letter, shift) {
   charCode <= 122
   ) {
     return String.fromCharCode((((charCode - 96) + shift) % 26) + 96);
-  }
+  } else { return String.fromCharCode(charCode); }
 }
 
 function caesar(string, shift) {
@@ -32,8 +32,8 @@ console.log(caesar("a", 1));
 console.log(caesar("abcz", 1));
 console.log(caesar("irk", 13));
 console.log(caesar("fusion", 6));
-console.log(caesar("dailyprogrammer", 6));
-console.log(caesar("jgorevxumxgsskx", 20));
+console.log(caesar("Daily Programmer!", 6));
+console.log(caesar("jgore vxumxgsskx", 20));
 
 </script>
 </body>
