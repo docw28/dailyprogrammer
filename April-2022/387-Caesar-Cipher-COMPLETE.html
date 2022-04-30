@@ -1,0 +1,39 @@
+<body>
+<script type="text/javascript">
+
+
+function caesarShift(letter, shift) {
+  charCode = letter.charCodeAt();
+  if (
+    charCode >= 65 &&
+    charCode <= 90
+  ) {
+    return String.fromCharCode((((charCode - 64) + shift) % 26) + 64);
+  } else if (
+  charCode >= 97 &&
+  charCode <= 122
+  ) {
+    return String.fromCharCode((((charCode - 96) + shift) % 26) + 96);
+  }
+}
+
+function caesar(string, shift) {
+  stringOut = "";
+  string = string.split("");
+
+  for (letter of string) {
+    stringOut += caesarShift(letter, shift);
+  }
+  return stringOut;
+}
+
+
+console.log(caesar("a", 1));
+console.log(caesar("abcz", 1));
+console.log(caesar("irk", 13));
+console.log(caesar("fusion", 6));
+console.log(caesar("dailyprogrammer", 6));
+console.log(caesar("jgorevxumxgsskx", 20));
+
+</script>
+</body>
