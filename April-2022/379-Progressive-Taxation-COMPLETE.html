@@ -1,0 +1,50 @@
+<body>
+<script type="text/javascript">
+
+const taxBrackets = [
+  {cap: 10000, rate: 0.00},
+  {cap: 30000, rate: 0.10},
+  {cap: 100000, rate: 0.25},
+  {cap: "Anything higher", rate: 0.40}
+]
+
+function tax(n) {
+  amountTaxed = 0;
+  if (n > taxBrackets[0].cap) {
+    n -= taxBrackets[0].cap;
+    amountTaxed += 0;
+  } else {
+    amountTaxed = 0;
+    return Math.floor(amountTaxed);
+  }
+
+  if (n > taxBrackets[1].cap - taxBrackets[0].cap) {
+    n -= taxBrackets[1].cap - taxBrackets[0].cap;
+    amountTaxed = (taxBrackets[1].cap - taxBrackets[0].cap) * taxBrackets[1].rate;
+  } else {
+    amountTaxed += n * taxBrackets[1].rate;
+    return Math.floor(amountTaxed);
+  }
+
+  if (n > taxBrackets[2].cap - taxBrackets[1].cap) {
+    n -= taxBrackets[2].cap - taxBrackets[1].cap;
+    amountTaxed += (taxBrackets[2].cap - taxBrackets[1].cap) * taxBrackets[2].rate;
+  } else {
+    amountTaxed += n * taxBrackets[2].rate;
+    return Math.floor(amountTaxed);
+  }
+
+  amountTaxed += n * taxBrackets[3].rate;
+  return Math.floor(amountTaxed);
+}
+
+console.log(tax(0));
+console.log(tax(10000));
+console.log(tax(10009));
+console.log(tax(10010));
+console.log(tax(12000));
+console.log(tax(56789));
+console.log(tax(1234567));
+
+</script>
+</body>
